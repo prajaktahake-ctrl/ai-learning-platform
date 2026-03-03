@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from app.db.database import engine, Base
 import app.models.user   # Import the User model to ensure the table is created
+from app.api import auth 
 
 app = FastAPI()
-
+app.include_router(auth.router)  # Include the authentication routes
 
 @app.on_event("startup")
 def test_database_connection():
