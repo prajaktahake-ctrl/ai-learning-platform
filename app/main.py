@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from app.db.database import engine
+from app.db.database import engine, Base
+import app.models.user   # Import the User model to ensure the table is created
 
 app = FastAPI()
 
@@ -13,7 +14,9 @@ def test_database_connection():
         print("Database connection failed ❌")
         print(str(e))
 
+Base.metadata.create_all(bind=engine)  # Create tables based on models
 
 @app.get("/")
 def root():
     return {"message": "AI Learning Platform Backend Running"}
+
