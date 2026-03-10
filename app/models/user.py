@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.sql import func
 from app.db.database import Base
+from sqlalchemy.orm import relationship
 
 
 class User(Base):
@@ -20,3 +21,5 @@ class User(Base):
     hours_per_day = Column(Integer, nullable=False, default=1)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+    learning_paths = relationship("LearningPath", back_populates="user")
