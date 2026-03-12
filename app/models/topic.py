@@ -12,9 +12,9 @@ class TopicStatus(str, enum.Enum):
 
 
 class DifficultyLevel(str, enum.Enum):
-    beginner = "beginner"
-    intermediate = "intermediate"
-    advanced = "advanced"
+    beginner = "Beginner"
+    intermediate = "Intermediate"
+    advanced = "Advanced"
 
 
 class Topic(Base):
@@ -42,4 +42,6 @@ class Topic(Base):
 
     # relationship
     # learning_path = relationship("LearningPath", backref="topics")
-    learning_path = relationship("LearningPath", back_populates="topics")
+    learning_path = relationship("LearningPath", back_populates="topics", cascade="all, delete")
+
+    subtopics = relationship("SubTopic", back_populates="topic", cascade="all, delete")

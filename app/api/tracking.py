@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from app.schemas.topic_schema import TopicCreate, TopicResponse
-from app.services.foundation.tracking_service import create_topic, get_topics
+from app.services.foundation.tracking_service import get_topics
 
 router = APIRouter(prefix="/topics", tags=["Topics"])
 
@@ -15,7 +15,7 @@ def create_new_topic(
         db: Session = Depends(get_db)
 ):
 
-    return create_topic(db, learning_path_id, data)
+    return create_new_topic(db, learning_path_id, data)
 
 
 @router.get("/{learning_path_id}", response_model=list[TopicResponse])

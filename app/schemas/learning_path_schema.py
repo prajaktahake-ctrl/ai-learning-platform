@@ -1,23 +1,18 @@
 from pydantic import BaseModel
-from datetime import date
 from typing import List
-from app.schemas.topic_schema import TopicResponse
+from .topic_schema import TopicResponse
+from datetime import date
 
-
-class LearningPathCreate(BaseModel):
-    title: str
+class LearningPathGenerateRequest(BaseModel):
+    user_id: int
+    goal: str
+    level: str
+    duration_weeks: int
     start_date: date
-    estimated_completion_date: date
+    # estimated_completion_date: date
 
 
 class LearningPathResponse(BaseModel):
     id: int
     title: str
-    start_date: date
-    estimated_completion_date: date
-    status: str
-
-    topics: List[TopicResponse] = []
-
-    class Config:
-        from_attributes = True
+    topics: List[TopicResponse]

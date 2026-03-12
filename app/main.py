@@ -3,8 +3,7 @@ from app.db.database import engine, Base
 import app.models.user   # Import the User model to ensure the table is created
 from app.api import auth 
 import app.models.learning_plan
-import app.models.topic
-from fastapi import FastAPI
+import app.models.topic, app.models.subtopic
 from app.api import learning_path
 from app.api import tracking
 
