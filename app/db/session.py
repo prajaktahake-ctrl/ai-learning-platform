@@ -1,0 +1,13 @@
+from sqlalchemy.orm import sessionmaker
+from app.db.database import engine 
+
+
+# Create a session factory bound to the engine
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
