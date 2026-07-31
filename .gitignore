@@ -1,5 +1,72 @@
-__pycache__/
+# === Environment & secrets ===
 .env
+.env.*
+!.env.example
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# === Virtual environments ===
 venv/
-*.pyc
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# === Packaging / build artifacts ===
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# === Testing & coverage ===
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# === Type checkers / linters ===
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# === Database ===
+*.sqlite3
+*.db
+*.db-journal
+
+# === Alembic (keep migration scripts, ignore local db state if any) ===
+# alembic/versions/*.pyc is already covered by __pycache__/*.pyc above
+
+# === Logs ===
 *.log
+logs/
+
+# === IDE / editor ===
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# === OS junk ===
+Thumbs.db
+desktop.ini
+
+# === Jupyter ===
+.ipynb_checkpoints/
+
+# === Uvicorn / FastAPI local artifacts ===
+*.pid
+
+# === Docker (local override files, not the shared compose config) ===
+docker-compose.override.yml
